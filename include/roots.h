@@ -5,4 +5,6 @@ double bisec(double (*f)(double), double a, double b, double e);
 
 double falposic(double (*f)(double), double a, double b, double e);
 
+double fixpoint(double (*f)(double), double (*g)(double), double x, double e, int maxint, bool I);
+
 #endif
