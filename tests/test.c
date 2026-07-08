@@ -25,6 +25,11 @@ double g1(double x){
 double g2(double x){
     return 3.2/log(x);
 }
+
+double g3(double x){
+    return x - ((cos(x) - x)/(-sin(x) - 1));
+}
+
 /* Test bisection method
 int main(){
     double root = bisec(f1, -1, 1, 1e-12);
@@ -41,7 +46,16 @@ int main(){
 }
 */
 
+/* Test fixed point method
 int main(){
     double root = fixpoint(f3, g2,  2.5, 1e-5, 150, false);
     return 0;
 }
+*/
+
+// Test newton's method
+int main(){
+    double root = newton_meth(f1, g3, 1, 1e-12, 100);
+    return 0;
+}
+

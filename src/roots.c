@@ -118,15 +118,52 @@ double fixpoint(double (*f)(double), double (*g)(double), double x, double e, in
         }
         if((fabs(x1 - x0) < e)||fabs(fx1) < e){
             printf("-------------------------------------------------\n");
-            printf("Iteration: %d\n", i);
+            printf("Iterations: %d\n", i);
             printf("Value of x1: %lf\n", x1);
             printf("Value of f(x1): %lf\n", fx1);
             printf("Value of |x1 - x0|: %lf\n", fabs(x1 - x0));
             printf("-------------------------------------------------\n");
             printf("The method has converged to: %lf\n", x1);
+            printf("=================================================\n");
         }else{
             printf("The method has not converged\n");
         }
+    }
+    return x1;
+}
+
+// Newton's method [ok]
+double newton_meth(double (*f)(double), double (*g)(double), double x, double e, int maxint){
+    double x0;
+    double x1 = x;
+    double fx1 = 0;
+    bool stop = false;
+    int i = 0;
+    while(stop == false){
+        x0 = x1;
+        x1 = g(x0);
+        if(fabs(x1) == INFINITY){
+            printf("The method diverged to infinity!\n");
+            return x1;
+        }
+        fx1 = f(x1);
+        i++;
+        if((fabs(x1 - x0) < e)||(i >= maxint)||(fabs(fx1) < e)){
+            stop = true;
+        }
+    }
+    if((fabs(x1 - x0) < e)||(fabs(fx1) < e)){
+        printf("=================================================\n");
+        printf("Newton's method\n");
+        printf("-------------------------------------------------\n");
+        printf("Iterations: %d\n", i);
+        printf("Value of |x1 - x0|: %lf\n", fabs(x1 - x0));
+        printf("Value of f(x1): %lf\n", fx1);
+        printf("-------------------------------------------------\n");
+        printf("The method has converged to: %lf\n", x1);
+        printf("=================================================\n");
+    }else{
+        printf("The method has not converged\n");
     }
     return x1;
 }
