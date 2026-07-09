@@ -53,9 +53,14 @@ int main(){
 }
 */
 
-// Test newton's method
+/* Test newton's method
 int main(){
     double root = newton_meth(f1, g3, 1, 1e-12, 100);
     return 0;
 }
-
+*/
+// Test Secant Method
+int main(){
+    double root = secant(f1, 0, 1e-3, 1e-2, 100);
+    return 0;
+}

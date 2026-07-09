@@ -13,4 +13,7 @@ double fixpoint(double (*f)(double), double (*g)(double), double x, double e, in
 // Newton's method
 double newton_meth(double (*f)(double), double (*g)(double), double x, double e, int maxint);
 
+// Secant method
+double secant(double (*f)(double), double x0, double x1, double e, int maxint);
+
 #endif

@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-// Bisection method [OK]
+// Bisection method [ok]
 double bisec(double (*f)(double), double a, double b, double e){
     int i = 0;
     double x = (a + b)/2;
@@ -29,7 +29,7 @@ double bisec(double (*f)(double), double a, double b, double e){
 
     return x;
 }
-// False position method [OK]
+// False position method [ok]
 double falposic(double (*f)(double), double a, double b, double e){
     double x;
     int i;
@@ -158,7 +158,7 @@ double newton_meth(double (*f)(double), double (*g)(double), double x, double e,
         printf("-------------------------------------------------\n");
         printf("Iterations: %d\n", i);
         printf("Value of |x1 - x0|: %lf\n", fabs(x1 - x0));
-        printf("Value of f(x1): %lf\n", fx1);
+        printf("Value of f(x): %lf\n", fx1);
         printf("-------------------------------------------------\n");
         printf("The method has converged to: %lf\n", x1);
         printf("=================================================\n");
@@ -167,3 +167,38 @@ double newton_meth(double (*f)(double), double (*g)(double), double x, double e,
     }
     return x1;
 }
+
+// Secant method [ok]
+double secant(double (*f)(double), double x0, double x1, double e, int maxint){
+    int stop = false;
+    int i = 0;
+    double x2 = 0;
+    double fx0 = 0;
+    double fx1 = 0;
+    while(stop == false){
+        fx0 = f(x0);
+        fx1 = f(x1);
+        x2 = x1 - (fx1 * (x1 - x0))/(fx1 - fx0);
+        x0 = x1;
+        x1 = x2;
+        i++;
+        if((fabs(x0 - x1) < e)||(i > maxint)){
+            stop = true;
+        }
+    }
+    if(fabs(x0 - x1) < e){
+        printf("=================================================\n");
+        printf("Secant method\n");
+        printf("-------------------------------------------------\n");
+        printf("Iterations: %d\n", i);
+        printf("Value of x: %lf\n", x1);
+        printf("Value of f(x): %lf", fx1);
+        printf("Value of |x1 - x0|: %lf\n", fabs(x1 - x0));
+        printf("-------------------------------------------------\n");
+        printf("The method has converged to: %lf\n", x1);
+        printf("=================================================\n");
+    }else{
+        printf("The method has not converged\n");
+    }
+    return x1;
+}   
