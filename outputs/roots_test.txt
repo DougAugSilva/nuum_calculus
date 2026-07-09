@@ -1,0 +1,51 @@
+=================================================
+==  Numerical Solutions of Equations Examples  ==
+=================================================
+Bisection Method
+-------------------------------------------------
+-> Function: cos(x) - x
+Value of |a - b|: 0.000000
+Interval that contains x: [0.739085, 0.739085]
+value of f(x): 0.000000
+-------------------------------------------------
+The method converges to: 0.739085
+=================================================
+False Position Method
+-------------------------------------------------
+-> Function: x^10 - 1
+Number of interactions: 29
+Value of x: 0.995534
+Interval that contains x: [0.995534, 1.300000]
+-------------------------------------------------
+The method converges to: 0.995534
+=================================================
+Fixed-Point Method
+-------------------------------------------------
+-> Function: x*log(x) - 3.2
+-> Proximity Function: 3.2/log(x)
+Iterations: 146
+Value of x1: 2.954161
+Value of f(x1): -0.000009
+Value of |x1 - x0|: 0.000009
+-------------------------------------------------
+The method has converged to: 2.954161
+=================================================
+Newton's Method
+-------------------------------------------------
+-> Function: cos(x) - x
+-> Proximity Function: x-((cos(x)-x)/(-sin(x)-1))
+Iterations: 4
+Value of |x1 - x0|: 0.000000
+Value of f(x): 0.000000
+-------------------------------------------------
+The method has converged to: 0.739085
+=================================================
+Secant method
+-------------------------------------------------
+-> Function: cos(x) - x
+Iterations: 4
+Value of x: 0.739119
+Value of f(x): 0.004636
+Value of |x1 - x0|: 0.002805
+-------------------------------------------------
+The method has converged to: 0.739119
