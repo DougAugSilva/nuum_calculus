@@ -5,9 +5,9 @@
 #include <stdbool.h>
 #include "systems.h"
 
-//============================================================
-// creating linear algebra functions for manipulating matrices
-
+/*============================================================
+ Creating linear algebra functions for manipulating matrices
+============================================================*/
 // create a matrix
 Matrix c_matrix(int rows, int cols){
     Matrix m;
@@ -41,7 +41,7 @@ int i_matrix(Matrix *m, double *data){
     return 0;
 }
 
-// print the elements in a matrix
+// print the elements on a matrix from a array
 int p_matrix(Matrix *m){
     for(int i = 0; i < m->rows; i++){
         printf("|");
@@ -51,4 +51,29 @@ int p_matrix(Matrix *m){
         printf("|\n");
     }
     return 0;
+}
+
+// return a element in the position (a, b)
+int rab_matrix(Matrix *m, int a, int b){
+    return m->data[(m->cols)*a + b];
+}
+
+// print a element in the position (a, b)
+int pab_matrix(Matrix *m, int a, int b){
+    printf("Element (%d, %d): %lf\n",a ,b , m->data[(m->cols)*a + b]);
+    //return 0;
+}
+
+// insert a element in the position (a, b)
+int iab_matrix(Matrix *m, int a, int b, double elem){
+    m->data[(m->cols)*a + b] = elem;
+    return 0;
+}
+//--OK^
+/*==========================================
+ Creating methods for solving linear systems
+===========================================*/
+// LU factorization
+int fact_LU(Matrix *m, Matrix *b){
+    int n = 
 }

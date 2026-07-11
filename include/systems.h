@@ -1,6 +1,9 @@
 #ifndef SYSTEMS_H
 #define SYSTEMS_H
 
+/*============================================================
+ Creating linear algebra functions for manipulating matrices
+============================================================*/
 // matrix structure
 typedef struct Matrix {
     int rows;
@@ -25,5 +28,18 @@ int i_matrix(Matrix *m, double *data);
 
 // print the elements in a matrix
 int p_matrix(Matrix *m);
+
+// return a element in the position (a, b)
+int rab_matrix(Matrix *m, int a, int b);
+
+// print a element in the position (a, b)
+int pab_matrix(Matrix *m, int a, int b);
+
+// insert a element in the position (a, b)
+int iab_matrix(Matrix *m, int a, int b, double elem);
+
+/*==========================================
+ Creating methods for solving linear systems
+===========================================*/
 
 #endif
