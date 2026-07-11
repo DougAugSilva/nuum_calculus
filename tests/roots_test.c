@@ -4,7 +4,10 @@
 #include <string.h>
 #include <stdbool.h>
 #include "roots.h"
-
+/*
+comand for compiling in linux using GCC: 
+gcc -Iinclude src/roots.c tests/roots_test.c -o roots_test -lm
+*/
 // Testing functions
 double f1(double x){
     return cos(x) - x;
@@ -95,8 +98,8 @@ int main(){
 
     FILE *FP5 = freopen("outputs/roots_test.txt", "a", stdout);
     double root = secant(f1, 0, 1e-3, 1e-2, 100);
+    fprintf(FP5, "=================================================\n");
     fclose(stdout);
 
-    //fclose(fpointer);
     return 0;
 }

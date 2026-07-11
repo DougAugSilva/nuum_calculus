@@ -7,7 +7,7 @@ With this repository I want to put into practice my studies in numerical calculu
 To use this repository you just need to compile the code with the function in they respective aquiver, and and call those files as libraries of C.
 
 ## Repository structure
-
+> OBS: Modify because the creation of new outputs.
 ```
 nuum_calculus/
 ├── include/
