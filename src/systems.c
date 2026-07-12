@@ -160,6 +160,7 @@ Matrix mul_matrix(Matrix *A, Matrix *B){
  ==================================*/
 // LU factorization
 Matrix fact_LU(Matrix *m, Matrix *b){
+    clock_t beguin = clock();
     int n = m->rows;
     // LU = m
     Matrix LU = c_matrix(n, n);
@@ -251,11 +252,14 @@ Matrix fact_LU(Matrix *m, Matrix *b){
         double x_val = (rab_matrix(&y, i, 0) - sum) / rab_matrix(&U, i, i);
         iab_matrix(&x, i, 0, x_val);
     }
+    clock_t end = clock();
+    double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
     printf("===========================================\n");
     printf("LU Factorization Method\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x);
+    printf("Elapsed time: %lf\n", elapsed_time);
     printf("===========================================\n");
     fflush(stdout);
     
@@ -270,6 +274,7 @@ Matrix fact_LU(Matrix *m, Matrix *b){
 
 // Cholesky method
 Matrix cholesky(Matrix *m, Matrix *b){
+    clock_t beguin = clock();
     int n = m->rows;
     Matrix G = c_matrix(n, n);
     for(int i = 0; i < n; i++){
@@ -319,12 +324,14 @@ Matrix cholesky(Matrix *m, Matrix *b){
         double x_val = (rab_matrix(&y, i, 0) - sum) / rab_matrix(&G, i, i);
         iab_matrix(&x, i, 0, x_val);
     }
-    
+    clock_t end = clock();
+    double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
     printf("===========================================\n");
     printf("Cholesky Decomposition Method\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x);
+    printf("Elapsed time: %lf\n", elapsed_time);
     printf("===========================================\n");
     fflush(stdout);
     
@@ -335,6 +342,7 @@ Matrix cholesky(Matrix *m, Matrix *b){
 
 // Gauss-Jacobi method
 Matrix gauss_jacobi(Matrix *m, Matrix *b, double e){
+    clock_t beguin = clock();
     int n = m->rows;
     int proceed = 0;
     int N = 10000;
@@ -388,14 +396,18 @@ Matrix gauss_jacobi(Matrix *m, Matrix *b, double e){
             criteria = max_dk / maximum;
         }
     }
+    clock_t end = clock();
+    double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
     printf("===========================================\n");
     printf("Método de Gauss-Jacobi\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x0);
+    printf("Elapsed time: %lf\n", elapsed_time);
     printf("Number of Interactions: %d\n", iter);
     printf("===========================================\n");
     fflush(stdout);
     d_matrix(&x);
     return x0;
 }
+
