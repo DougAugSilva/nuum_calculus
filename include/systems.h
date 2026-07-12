@@ -68,4 +68,7 @@ Matrix cholesky(Matrix *m, Matrix *b);
 // Gauss-Jacobi method
 Matrix gauss_jacobi(Matrix *m, Matrix *b, double e);
 
+// Gauss-Seidel method
+Matrix gauss_seidel(Matrix *m, Matrix *b, double e);
+
 #endif

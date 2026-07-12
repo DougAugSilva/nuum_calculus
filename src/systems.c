@@ -180,6 +180,7 @@ Matrix fact_LU(Matrix *m, Matrix *b){
         int max_row_index = max_rel_idx + k;
         d_matrix(&abs_col);
         if(rab_matrix(&LU, max_row_index, k) == 0.0){
+            printf("-------------------------------------------\n");
             printf("Error: The matrix is ​​singular.\n");
             free(p);
             d_matrix(&LU);
@@ -254,13 +255,11 @@ Matrix fact_LU(Matrix *m, Matrix *b){
     }
     clock_t end = clock();
     double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
-    printf("===========================================\n");
     printf("LU Factorization Method\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x);
-    printf("Elapsed time: %lf\n", elapsed_time);
-    printf("===========================================\n");
+    printf("Elapsed time: %lfs\n", elapsed_time);
     fflush(stdout);
     
     d_matrix(&LU);
@@ -290,6 +289,7 @@ Matrix cholesky(Matrix *m, Matrix *b){
         }
         double root_term = rab_matrix(m, i, i) - sum;
         if(root_term <= 0.0){
+            printf("-------------------------------------------\n");
             printf("The matrix is ​​not positive definite or failed to converge due to floating-point rounding.\n");
             d_matrix(&G);
             return c_matrix(0, 0);
@@ -326,13 +326,11 @@ Matrix cholesky(Matrix *m, Matrix *b){
     }
     clock_t end = clock();
     double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
-    printf("===========================================\n");
     printf("Cholesky Decomposition Method\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x);
-    printf("Elapsed time: %lf\n", elapsed_time);
-    printf("===========================================\n");
+    printf("Elapsed time: %lfs\n", elapsed_time);
     fflush(stdout);
     
     d_matrix(&G);
@@ -354,6 +352,7 @@ Matrix gauss_jacobi(Matrix *m, Matrix *b, double e){
     // Check for zero on diagonal
     for(int i = 0; i < n; i++){
         if(rab_matrix(m, i, i) == 0.0){
+            printf("-------------------------------------------\n");
             printf("Error: zero on the main diagonal.\n");
             break;
         } else {
@@ -398,16 +397,72 @@ Matrix gauss_jacobi(Matrix *m, Matrix *b, double e){
     }
     clock_t end = clock();
     double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
-    printf("===========================================\n");
     printf("Método de Gauss-Jacobi\n");
     printf("-------------------------------------------\n");
     printf("Result:\n");
     p_matrix(&x0);
-    printf("Elapsed time: %lf\n", elapsed_time);
+    printf("Elapsed time: %lfs\n", elapsed_time);
     printf("Number of Interactions: %d\n", iter);
-    printf("===========================================\n");
     fflush(stdout);
     d_matrix(&x);
     return x0;
 }
 
+// Gauss-Seidel method
+Matrix gauss_seidel(Matrix *m, Matrix *b, double e){
+    clock_t beguin = clock();
+    int iter = 0;
+    int N_max = 10000;
+    int n = m->rows;
+    
+    // Initial guess x0 = 0.0
+    Matrix x0 = c_matrix(n, 1);
+    for(int i = 0; i < n; i++){
+        iab_matrix(&x0, i, 0, 0.0);
+    }
+    
+    // Check for zero on diagonal
+    for(int i = 0; i < n; i++){
+        if(rab_matrix(m, i, i) == 0.0){
+            printf("-------------------------------------------\n");
+            printf("Error: zero on the main diagonal.\n");
+            d_matrix(&x0);
+            return c_matrix(0, 0);
+        }
+    }
+    
+    double criteria = e + 1.0;
+    while(iter < N_max && criteria > e){
+        for(int i = 0; i < n; i++){
+            double x_val = rab_matrix(b, i, 0);
+            for(int j = 0; j < n; j++){
+                if(i != j){
+                    x_val -= rab_matrix(m, i, j) * rab_matrix(&x0, j, 0);
+                }
+            }
+            x_val /= rab_matrix(m, i, i);
+            iab_matrix(&x0, i, 0, x_val);
+        }
+        iter += 1;
+        Matrix m_x0 = mul_matrix(m, &x0);
+        criteria = max_res(*b, m_x0);
+        d_matrix(&m_x0);
+    }
+    
+    clock_t end = clock();
+    double elapsed_time = (double)(end - beguin) / CLOCKS_PER_SEC;
+    
+    if(iter >= N_max){
+        printf("-------------------------------------------\n");
+        printf("WARNING: The method reached the maximum number of iterations without converging\n");
+    }
+    printf("Gauss-Seidel Method\n");
+    printf("-----------------------------------------------\n");
+    printf("Result (x):\n");
+    p_matrix(&x0);
+    printf("Number of Iterations: %d\n", iter);
+    printf("Elapsed time: %lf\n", elapsed_time);
+    fflush(stdout);
+    
+    return x0;
+}

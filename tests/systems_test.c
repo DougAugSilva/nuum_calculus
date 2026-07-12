@@ -24,6 +24,7 @@ int main(){
     }
     
     // applies the LU method to the 7x7 Hilbert matrix and the vector b7
+    printf("===============================================\n");
     Matrix v1 = fact_LU(&A7, &b7);
     Matrix A7_v1 = mul_matrix(&A7, &v1);
     double res1 = max_res(b7, A7_v1);
@@ -32,6 +33,7 @@ int main(){
     printf("The maximum absolute error is: %lf\n", err1);
 
     // applies the cholesky method to the 7x7 Hilbert matrix and the vector b7
+    printf("===============================================\n");
     Matrix v2 = cholesky(&A7, &b7);
     Matrix A7_v2 = mul_matrix(&A7, &v2);
     double res2 = max_res(b7, A7_v2);
@@ -40,12 +42,22 @@ int main(){
     printf("The maximum absolute error is: %lf\n", err2);
 
     // applies the Gauss-Jacobi  method to the 7x7 Hilbert matrix and the vector b7
+    printf("===============================================\n");
     Matrix v3 = gauss_jacobi(&A7, &b7, 1e-8);
     Matrix A7_v3 = mul_matrix(&A7, &v3);
     double res3 = max_res(b7, A7_v3);
     double err3 = max_res(v3, x7);
     printf("The maximum norm of the residual: %lf\n", res3);
-    printf("The maximum absolute error is: %lf\n", err3);    
+    printf("The maximum absolute error is: %lf\n", err3);
+    
+    // applies the Gauss-Seidel method to the 7x7 Hilbert matrix and the vector b7
+    printf("===============================================\n");
+    Matrix v4 = gauss_seidel(&A7, &b7, 1e-8);
+    Matrix A7_v4 = mul_matrix(&A7, &v4);
+    double res4 = max_res(b7, A7_v4);
+    double err4 = max_res(v4, x7);
+    printf("The maximum norm of the residual: %lf\n", res4);
+    printf("The maximum absolute error is: %lf\n", err4);  
 
     //free the memory
     d_matrix(&A7);
@@ -60,6 +72,9 @@ int main(){
 
     d_matrix(&v3);
     d_matrix(&A7_v3);
+
+    d_matrix(&v4);
+    d_matrix(&A7_v4);
     
     //fflush(stdout);
     return 0;
