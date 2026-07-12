@@ -62,4 +62,7 @@ Creating methods for solving linear systems
 // LU factorization
 Matrix fact_LU(Matrix *m, Matrix *b);
 
+// Cholesky method
+Matrix cholesky(Matrix *m, Matrix *b);
+
 #endif
