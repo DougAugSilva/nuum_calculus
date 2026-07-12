@@ -3,9 +3,6 @@
 ## Repository objectives
 With this repository I want to put into practice my studies in numerical calculus and the C programming language. The repository contains several numerical methods to approximate functions values such as Newtons method, or methods to solve numerical problems, such as find the best splines to approximate a function, with quadratic and cubic splines.
 
-## How use this repository
-To use this repository you just need to compile the code with the function in they respective aquiver, and and call those files as libraries of C.
-
 ## Repository structure
 
 ```
@@ -34,6 +31,14 @@ nuum_calculus/
     ├── roots_test.c
     └── systems_test.c
 ```
+
+## How use this repository
+To use this repository you just need to compile the code with the function in they respective aquiver, and and call those files as libraries of C.
+I use *Linux* and *GCC* to compile the code during the development and test, I use the respective commands to compile and run the compiled code:
+- `gcc -Iinclude src/roots.c tests/roots_test.c -o roots_test -lm && ./roots_test`
+- `gcc -Iinclude src/systems.c tests/systems_test.c -o systems_test -lm && ./systems_test`
+- `.`
+- `.`
 
 ## Mathematical content of this repository
 I choose not to focus too much deep in the mathematical rigorous theory in this repository, in the meaning that there is not proofs or explanation of the methods, just some comments in the code to help he readers to understand some "obscure mathematical tricks".
