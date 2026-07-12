@@ -111,7 +111,7 @@ int argmax_matrix(Matrix *m){
     return max_idx;
 }
 
-// returns the highest value within a given array
+// returns the highest value within a given array (named norma_inf on python)
 double max_matrix(Matrix *m){
     double max_val = m->data[0];
     int size = m->rows * m->cols;
@@ -331,4 +331,71 @@ Matrix cholesky(Matrix *m, Matrix *b){
     d_matrix(&G);
     d_matrix(&y);
     return x;
+}
+
+// Gauss-Jacobi method
+Matrix gauss_jacobi(Matrix *m, Matrix *b, double e){
+    int n = m->rows;
+    int proceed = 0;
+    int N = 10000;
+    // Initial guess x0 = 500
+    Matrix x0 = c_matrix(n, 1);
+    for(int i = 0; i < n; i++){
+        iab_matrix(&x0, i, 0, 500.0);
+    }
+    // Check for zero on diagonal
+    for(int i = 0; i < n; i++){
+        if(rab_matrix(m, i, i) == 0.0){
+            printf("Error: zero on the main diagonal.\n");
+            break;
+        } else {
+            proceed += 1;
+        }
+    }
+    int iter = 0;
+    Matrix x = c_matrix(n, 1);
+    if(proceed == n){
+        double criteria = e + 1.0;
+        while(criteria > e && iter <= N){
+            iter++;
+            double max_dk = 0.0;
+            for(int i = 0; i < n; i++){
+                double sum = 0.0;
+                for(int j = 0; j < n; j++){
+                    if(i != j){
+                        sum += rab_matrix(m, i, j) * rab_matrix(&x0, j, 0);
+                    }
+                }
+                double xk = (rab_matrix(b, i, 0) - sum) / rab_matrix(m, i, i);
+                iab_matrix(&x, i, 0, xk);
+                
+                double dk = fabs(xk - rab_matrix(&x0, i, 0));
+                if(i == 0 || dk > max_dk){
+                    max_dk = dk;
+                }
+            }
+            double maximum = 0.0;
+            for(int i = 0; i < n; i++){
+                double check = fabs(rab_matrix(&x, i, 0));
+                if(check > maximum){
+                    maximum = check;
+                }
+            }
+            // Update x0
+            for(int i = 0; i < n; i++){
+                iab_matrix(&x0, i, 0, rab_matrix(&x, i, 0));
+            }
+            criteria = max_dk / maximum;
+        }
+    }
+    printf("===========================================\n");
+    printf("Método de Gauss-Jacobi\n");
+    printf("-------------------------------------------\n");
+    printf("Result:\n");
+    p_matrix(&x0);
+    printf("Number of Interactions: %d\n", iter);
+    printf("===========================================\n");
+    fflush(stdout);
+    d_matrix(&x);
+    return x0;
 }

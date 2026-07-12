@@ -65,4 +65,7 @@ Matrix fact_LU(Matrix *m, Matrix *b);
 // Cholesky method
 Matrix cholesky(Matrix *m, Matrix *b);
 
+// Gauss-Jacobi method
+Matrix gauss_jacobi(Matrix *m, Matrix *b, double e);
+
 #endif

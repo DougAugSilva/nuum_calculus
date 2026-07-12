@@ -39,16 +39,27 @@ int main(){
     printf("The maximum norm of the residual: %lf\n", res2);
     printf("The maximum absolute error is: %lf\n", err2);
 
+    // applies the Gauss-Jacobi  method to the 7x7 Hilbert matrix and the vector b7
+    Matrix v3 = gauss_jacobi(&A7, &b7, 1e-8);
+    Matrix A7_v3 = mul_matrix(&A7, &v3);
+    double res3 = max_res(b7, A7_v3);
+    double err3 = max_res(v3, x7);
+    printf("The maximum norm of the residual: %lf\n", res3);
+    printf("The maximum absolute error is: %lf\n", err3);    
+
     //free the memory
     d_matrix(&A7);
     d_matrix(&b7);
-
     d_matrix(&x7);
+
     d_matrix(&v1);
     d_matrix(&A7_v1);
 
     d_matrix(&v2);
     d_matrix(&A7_v2);
+
+    d_matrix(&v3);
+    d_matrix(&A7_v3);
     
     //fflush(stdout);
     return 0;
