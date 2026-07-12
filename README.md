@@ -7,7 +7,7 @@ With this repository I want to put into practice my studies in numerical calculu
 To use this repository you just need to compile the code with the function in they respective aquiver, and and call those files as libraries of C.
 
 ## Repository structure
-> OBS: Modify because the creation of new outputs.
+
 ```
 nuum_calculus/
 ├── include/
@@ -15,15 +15,24 @@ nuum_calculus/
 │   ├── interpolation.h
 │   ├── roots.h
 │   └── systems.h
-├── LICENSE
-├── README.md
+├── outputs/
+│   ├── integration_test.txt
+│   ├── interpolation_test.txt
+│   ├── roots_test.txt
+│   └── systems_test.txt
 ├── src/
 │   ├── integration.c
 │   ├── interpolation.c
 │   ├── roots.c
 │   └── systems.c
+├── .gitignore
+├── LICENSE
+├── README.md
 └── tests/
-    └── test.c
+    ├── integration_test.c
+    ├── interpolation_test.c
+    ├── roots_test.c
+    └── systems_test.c
 ```
 
 ## Mathematical content of this repository
@@ -40,11 +49,11 @@ The topics covers in numerical analysis are the same as the ones I studied in my
   - Secant method
 
 - #### Direct and iterative methods for solving linear systems
-  - Gaussian elimination
   - LU factorization
   - Cholesky method
   - Gauss-Jacobi method
   - Gauss-Seidel method
+  - SOR decomposition
 
 - #### Polynomial interpolation and curve fitting using the least squares method
   - Linear system form

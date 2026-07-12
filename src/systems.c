@@ -267,3 +267,8 @@ Matrix fact_LU(Matrix *m, Matrix *b){
     free(p);
     return x;
 }
+
+// Cholesky method
+Matrix cholesky(Matrix *m, Matrix *b){
+    
+}
