@@ -8,17 +8,14 @@ With this repository I want to put into practice my studies in numerical calculu
 ```
 nuum_calculus/
 ├── include/
-│   ├── integration.h
 │   ├── interpolation.h
 │   ├── roots.h
 │   └── systems.h
 ├── outputs/
-│   ├── integration_test.txt
 │   ├── interpolation_test.txt
 │   ├── roots_test.txt
 │   └── systems_test.txt
 ├── src/
-│   ├── integration.c
 │   ├── interpolation.c
 │   ├── roots.c
 │   └── systems.c
@@ -26,7 +23,6 @@ nuum_calculus/
 ├── LICENSE
 ├── README.md
 └── tests/
-    ├── integration_test.c
     ├── interpolation_test.c
     ├── roots_test.c
     └── systems_test.c
@@ -37,7 +33,6 @@ To use this repository you just need to compile the code with the function in th
 I use *Linux* and *GCC* to compile the code during the development and test, I use the respective commands to compile and run the compiled code:
 - `gcc -Iinclude src/roots.c tests/roots_test.c -o roots_test -lm && ./roots_test`
 - `gcc -Iinclude src/systems.c tests/systems_test.c -o systems_test -lm && ./systems_test`
-- `.`
 - `.`
 
 ## Mathematical content of this repository
@@ -66,7 +61,3 @@ The topics covers in numerical analysis are the same as the ones I studied in my
   - Newton form
   - Splines (linear, quadratic and cubic)
   - Least squares (discrete and continuous methods)
-
-- #### Numerical integration
-  - Trapezoidal rule
-  - Simpson's rule

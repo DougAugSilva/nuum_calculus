@@ -505,15 +505,15 @@ Matrix sor(Matrix *m, Matrix *b, double e, double w){
         Matrix prev_iter = x_prev;
         Matrix curr_iter = x_curr;
         for(int i = 0; i < n; i++){
-            double sum_novo = 0.0;
-            double sum_velho = 0.0;
+            double new_sum = 0.0;
+            double old_sum = 0.0;
             for(int j = 0; j < i; j++){
-                sum_novo += rab_matrix(m, i, j) * rab_matrix(&curr_iter, j, 0);
+                new_sum += rab_matrix(m, i, j) * rab_matrix(&curr_iter, j, 0);
             }
             for(int j = i + 1; j < n; j++){
-                sum_velho += rab_matrix(m, i, j) * rab_matrix(&prev_iter, j, 0);
+                old_sum += rab_matrix(m, i, j) * rab_matrix(&prev_iter, j, 0);
             }
-            double x_gs = (rab_matrix(b, i, 0) - sum_novo - sum_velho) / rab_matrix(m, i, i);
+            double x_gs = (rab_matrix(b, i, 0) - new_sum - old_sum) / rab_matrix(m, i, i);
             double x_val = (1.0 - w) * rab_matrix(&prev_iter, i, 0) + w * x_gs;
             iab_matrix(&curr_iter, i, 0, x_val);
         }
