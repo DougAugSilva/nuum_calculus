@@ -5,8 +5,8 @@
 #include <stdbool.h>
 #include "systems.h"
 /*
-comand for compiling in linux using GCC: 
-gcc -Iinclude src/systems.c tests/systems_test.c -o systems_test -lm
+* comand for compiling in linux using GCC: 
+* gcc -Iinclude src/systems.c tests/systems_test.c -o bin/systems_test -lm
 */
 
 // Testing the methods
@@ -27,6 +27,10 @@ int main(){
     fprintf(fp, "========================================================================\n");
     fprintf(fp, "==  Direct and Iterative Methods for Solving Linear Systems Examples  ==\n");
     fprintf(fp, "========================================================================\n");
+    fprintf(fp, "Using the methods to solve a system of a 7x7 Hilbert Matrix, a vector\n");
+    fprintf(fp, "sum b, with the response vector x = (1, ..., 1). I chose this system\n");
+    fprintf(fp, "because not all iterative methods converge for it, which illustrates how\n"); 
+    fprintf(fp, "the code handles these cases.\n");
     fclose(fp);
 
     // applies the LU method to the 7x7 Hilbert matrix and the vector b7

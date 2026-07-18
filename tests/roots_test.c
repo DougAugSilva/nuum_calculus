@@ -5,8 +5,8 @@
 #include <stdbool.h>
 #include "roots.h"
 /*
-comand for compiling in linux using GCC: 
-gcc -Iinclude src/roots.c tests/roots_test.c -o roots_test -lm
+* comand for compiling in linux using GCC: 
+* gcc -Iinclude src/roots.c tests/roots_test.c -o bin/roots_test -lm
 */
 // Testing functions
 double f1(double x){
