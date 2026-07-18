@@ -470,7 +470,7 @@ Matrix gauss_seidel(Matrix *m, Matrix *b, double e){
     p_matrix(&x0);
     printf("-----------------------------------------------\n");
     printf("Number of Iterations: %d\n", iter);
-    printf("Elapsed time: %lf\n", elapsed_time);
+    printf("Elapsed time: %lfs\n", elapsed_time);
     fflush(stdout);
     
     return x0;
@@ -557,7 +557,7 @@ Matrix sor(Matrix *m, Matrix *b, double e, double w){
     p_matrix(&x_prev);
     printf("-----------------------------------------------\n");
     printf("Number of Iterations: %d\n", iter);
-    printf("Elapsed time: %.4f seconds\n", elapsed_time);
+    printf("Elapsed time: %lfs\n", elapsed_time);
     fflush(stdout);
 
     d_matrix(&x_curr);

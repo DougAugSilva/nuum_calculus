@@ -1,8 +1,6 @@
 *.o
 *.a
-test
-roots_test
-systems_test
+/bin
 notes.txt
 base.py
 agy.md

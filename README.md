@@ -30,9 +30,10 @@ nuum_calculus/
 
 ## How use this repository
 To use this repository you just need to compile the code with the function in they respective aquiver, and and call those files as libraries of C.
-I use *Linux* and *GCC* to compile the code during the development and test, I use the respective commands to compile and run the compiled code:
-- `gcc -Iinclude src/roots.c tests/roots_test.c -o roots_test -lm && ./roots_test`
-- `gcc -Iinclude src/systems.c tests/systems_test.c -o systems_test -lm && ./systems_test`
+You will also need to have Gnuplot installed to plot the graphs in the `interpolation.c` test file. To install it on Linux, run `sudo apt update && sudo apt install gnuplot -y`.
+I use *Linux* and *GCC* to compile the code during the development and test. To compile the code on your native Linux machine (or on Windows WSL, if you prefer) and run the test files created to demonstrate the use of each function, execute the following scripts.:
+- `gcc -Iinclude src/roots.c tests/roots_test.c -o bin/roots_test -lm && ./bin/roots_test`
+- `gcc -Iinclude src/systems.c tests/systems_test.c -o bin/systems_test -lm && ./bin/systems_test`
 - `.`
 
 ## Mathematical content of this repository
