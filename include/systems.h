@@ -71,4 +71,7 @@ Matrix gauss_jacobi(Matrix *m, Matrix *b, double e);
 // Gauss-Seidel method
 Matrix gauss_seidel(Matrix *m, Matrix *b, double e);
 
+// SOR method
+Matrix sor(Matrix *m, Matrix *b, double e, double w);
+
 #endif
