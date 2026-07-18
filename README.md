@@ -7,22 +7,30 @@ With this repository I want to put into practice my studies in numerical calculu
 
 ```
 nuum_calculus/
-├── include/
-│   ├── interpolation.h
-│   ├── roots.h
-│   └── systems.h
-├── outputs/
-│   ├── interpolation_test.txt
-│   ├── roots_test.txt
-│   └── systems_test.txt
-├── src/
-│   ├── interpolation.c
-│   ├── roots.c
-│   └── systems.c
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-└── tests/
+├── bin
+│   ├── interpolation_test
+│   ├── roots_test
+│   └── systems_test
+├── data
+│   ├── dados.txt
+│   ├── grafico.png
+│   └── plot_script.gp
+├── include
+│   ├── interpolation.h
+│   ├── roots.h
+│   └── systems.h
+├── outputs
+│   ├── relatorio.md
+│   ├── roots_test.txt
+│   └── systems_test.txt
+├── src
+│   ├── interpolation.c
+│   ├── roots.c
+│   └── systems.c
+└── tests
     ├── interpolation_test.c
     ├── roots_test.c
     └── systems_test.c
